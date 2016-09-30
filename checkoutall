@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+cwd=$(pwd)
+wantedBranch=$1
+
+find . -type d -name .git | while read -r dir
+do
+	cd $(dirname $dir);
+	echo -e "\033[44m$(pwd)\033[0m"
+	git fetch
+	branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+
+	if [ "$(git branch | grep $wantedBranch)" = "" ]; then
+		if [ "$(git branch -r | grep origin/$wantedBranch | sed 's/^  //')" = "origin/$wantedBranch" ]; then
+			git fetch origin $wantedBranch:$wantedBranch
+			git checkout $wantedBranch
+		fi
+	else
+		if [ "$branch" != "$wantedBranch" ]; then
+			git checkout $wantedBranch
+		fi
+
+		git pull origin $wantedBranch
+	fi
+
+	cd $cwd
+done

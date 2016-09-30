@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cwd=$(pwd);
+
+find . -type d -name .git | while read -r dir
+do
+	cd $(dirname $dir);
+	if [ ! -z "$(git status --porcelain)" ]
+	then
+		echo -e "\033[44m$(pwd)\033[0m"
+		git status -s;
+		echo "";
+	fi
+
+	cd $cwd
+
+done
