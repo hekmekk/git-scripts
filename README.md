@@ -1,11 +1,10 @@
-git-scripts
-===========
+# git-scripts
 
-Add this to your .bashrc or smth
+Scripts for managing multiple git repositories.
 
 ```bash
-alias branchall='~/git/git-scripts/branchall'
-alias checkoutall='~/git/git-scripts/checkoutall'
-alias pullall='~/git/git-scripts/pullall'
-alias statusall='~/git/git-scripts/statusall'
+branchall
+checkoutall
+pullall
+statusall
 ```
