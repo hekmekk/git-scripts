@@ -8,3 +8,6 @@ checkoutall
 pullall
 statusall
 ```
+
+## Credits
+- originally by [@DennisBecker](https://github.com/DennisBecker)
